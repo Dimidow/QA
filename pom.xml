@@ -6,7 +6,11 @@
 
     <groupId>com.umarket.firstTest</groupId>
     <artifactId>firstTest</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <jdk.version>1.8</jdk.version>
+    </properties>
 
     <build>
         <plugins>
@@ -17,25 +21,57 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
+
                 </configuration>
             </plugin>
-        </plugins>
-    </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.13.0</version>
-        </dependency>
+            <!--
+            <plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-jar-plugin</artifactId>
+                   <version>2.4</version>
+                   <configuration>
+                       <archive>
+                           <manifest>
+                               <mainClass>com.umarket.test.Louncher</mainClass>
+                           </manifest>
+                       </archive>
+                   </configuration>
+               </plugin>
+                -->
 
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.5</version>
-        </dependency>
+               <plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-surefire-plugin</artifactId>
+                   <version>2.10</version>
+                   <configuration>
+                       <includes>
+                           <include>Louncher.class</include>
+                       </includes>
+                       <testFailureIgnore>true</testFailureIgnore>
+                   </configuration>
+               </plugin>
 
-    </dependencies>
+           </plugins>
+
+       </build>
+
+       <dependencies>
+           <dependency>
+               <groupId>org.seleniumhq.selenium</groupId>
+               <artifactId>selenium-java</artifactId>
+               <version>3.13.0</version>
+           </dependency>
+
+           <dependency>
+               <groupId>commons-io</groupId>
+               <artifactId>commons-io</artifactId>
+               <version>2.5</version>
+           </dependency>
+       </dependencies>
 
 
-</project>
+   </project>

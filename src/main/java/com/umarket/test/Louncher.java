@@ -49,7 +49,7 @@ public class Louncher {
         driver.manage().window().maximize();
 
 
-      testResult.append("Registration Testing" + "\n");
+      testResult.append("Registration Testing" + "\n" + "Localization,1-st regStep,2-nd regStep,LangAccount,Status,Additional info" + "\n");
         // register
        for (int i = 0; i < lang.length; i++) {
 
@@ -127,14 +127,14 @@ startTime2 = System.currentTimeMillis();
 
                 Thread.sleep(500);
                 File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                FileUtils.copyFile(scrFile, new File("./testResults/" + login + ".png"));
-                testResult.append(timeSpent1 + "," + timeSpent2 + "," + accountLang + "," + login + ".png" + "\n");
+                FileUtils.copyFile(scrFile, new File("./src/test/testResults/" + login + ".png"));
+                testResult.append(timeSpent1 + "," + timeSpent2 + "," + "null" +"," + login + ".png" + "\n");
 
             }
         }
 
 
-        testResult.append("Authorization Testing" + "\n");
+        testResult.append("Authorization Testing" + "\n" + "Localization,Status" +"\n");
         //authorization
         for (int j = 0; j < lang.length; j++){
             testResult.append(lang[j] + ",");
@@ -169,14 +169,14 @@ startTime2 = System.currentTimeMillis();
 
             Thread.sleep(500);
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(scrFile, new File("./testResults/" + login + ".png"));
+            FileUtils.copyFile(scrFile, new File("./src/test/testResults/" + login + ".png"));
             testResult.append(login + ".png" + "\n");
 
         }
 
         }
 
-        testResult.append("Forgot Password Testing" + "\n");
+        testResult.append("Forgot Password Testing" + "\n" + "Localization,mailSendStatus,mailReceivingStatus"+ "\n");
         //forgot password
 
         String placeholder[] = {"Email", "Correo electronico", "البريد الإلكتروني", "Электронная почта"};
@@ -263,8 +263,8 @@ startTime2 = System.currentTimeMillis();
 
                 Thread.sleep(500);
                 File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                FileUtils.copyFile(scrFile, new File("./testResults/" + login + ".png"));
-                testResult.append(login + ".png" + "\n");
+                FileUtils.copyFile(scrFile, new File("./src/test/testResults/" + login + ".png"));
+                testResult.append("Failed," + login + ".png" + "\n");
 
             }
 
@@ -275,7 +275,7 @@ startTime2 = System.currentTimeMillis();
         File file1 = new File("./testResults/", login + ".txt");
         try {
 
-            FileOutputStream fos = new FileOutputStream("./testResults/" +  "Report.csv");
+            FileOutputStream fos = new FileOutputStream("./src/test/testResults/" +  "Report.csv");
             testResult.toString();
             byte[] buffer = testResult.toString().getBytes();
             fos.write(buffer, 0, buffer.length);
