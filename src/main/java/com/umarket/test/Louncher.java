@@ -14,7 +14,7 @@ import org.apache.commons.io.FileUtils;
 
 
 public class Louncher {
-
+//first push
     private static WebDriver driver = null;
     public static String randomString() {
         String symbols = "RegistrationTesting";
